@@ -6,6 +6,7 @@ The comments will appear on the map. Thus, visitors will be able to see the fine
   Features not available in google maps:
 With google maps, you can access the ratings and reviews of shops, hotels, etc. in the city, but thanks to this application, you will be able to access values that are not included in this application in an easy and user-friendly way.
 
+#
 Phase-1
    Map interface,
    controls,
