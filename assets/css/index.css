@@ -21,6 +21,13 @@ body{
     padding: 0;
     width: 100svw;
     height: 100svh;
+    background-color: #eeeeee;
+    font-size: 14px;
+    line-height: 1.6;
+    font-family: "Montserrat", sans-serif;
+    color: #fff;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-size-adjust: 100%;
 }
 
 
@@ -204,4 +211,153 @@ body{
   }
 
 
+/* modal */
+.overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+}
 
+.modal {
+  display: none;
+  position: fixed;
+  color: black;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 20px;
+  /* background: #fff;
+  border: 1px solid #ccc;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); */
+  z-index: 1000;
+}
+
+/* upload file box */
+.file-upload-container {
+  width: 50%;
+  max-width: 500px;
+}
+
+.file-upload {
+  position: relative;
+  border: 2px dashed #b8bcbf;
+  border-radius: 10px;
+  padding: 40px;
+  text-align: center;
+  background-color: rgb(255, 255, 255);
+  transition: background-color 0.3s ease-in-out;
+}
+
+.file-upload:hover {
+  background-color: #e2e6ea;
+}
+
+.file-input {
+  display: none;
+}
+
+.file-label {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+}
+
+.upload-icon {
+  font-size: 50px;
+  color: #007bff;
+  margin-bottom: 10px;
+}
+
+.file-upload p {
+  margin: 0;
+  font-size: 16px;
+  color: #6c757d;
+}
+
+.file-upload.dragover {
+  background-color: #007bff;
+  color: white;
+}
+/* -------------------------------- */
+
+.form {
+  width: 60svw;
+  background-color: white;
+  padding: 3.125em;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: 5px 5px 15px -1px rgba(0,0,0,0.75);
+}
+
+.signup {
+  color: rgb(77, 75, 75);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  display: block;
+  font-weight: bold;
+  font-size: x-large;
+  margin-bottom: 0.5em;
+}
+
+.form--input {
+  width: 100%;
+  margin-bottom: 1.25em;
+  height: 40px;
+  border-radius: 5px;
+  border: 1px solid gray;
+  padding: 0.8em;
+  font-family: 'Inter', sans-serif;
+  outline: none;
+}
+
+.form--input:focus {
+  border: 1px solid #639;
+  outline: none;
+}
+
+.form--marketing {
+  display: flex;
+  margin-bottom: 1.25em;
+  align-items: center;
+}
+
+.form--marketing > input {
+  margin-right: 0.625em;
+}
+
+.form--marketing > label {
+  color: grey;
+  width: 8svw;
+}
+
+.checkbox, input[type="checkbox"] {
+  accent-color: #639;
+}
+
+.form--submit {
+  width: 50%;
+  padding: 0.625em;
+  border-radius: 5px;
+  color: white;
+  background-color: #639;
+  border: 1px dashed #639;
+  cursor: pointer;
+}
+
+.form--submit:hover {
+  color: #639;
+  background-color: white;
+  border: 1px dashed #639;
+  cursor: pointer;
+  transition: 0.5s;
+}
+input {
+  margin: 5px;
+}
