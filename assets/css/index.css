@@ -71,8 +71,8 @@ body{
   }
   
   .property .icon {
-    align-items: center;
     display: flex;
+    align-items: center;
     justify-content: center;
     color: #FFFFFF;
   }
@@ -120,9 +120,16 @@ body{
     background-color: #FFFFFF;
     border-radius: 8px;
     box-shadow: 10px 10px 5px rgba(0, 0, 0, 0.2);
-    height: 80px;
+    height: 40svh;
     padding: 8px 15px;
     width: auto;
+  }
+
+  .property>img {
+    display: none;
+  }
+  .highlight>img {
+    display: block;
   }
   
   .property.highlight::after {
@@ -148,66 +155,6 @@ body{
   
   .property .size {
     color: #388E3C;
-  }
-  
-  /*
-   * House icon colors.
-   */
-  .property.highlight:has(.fa-house) .icon {
-    color: var(--house-color);
-  }
-  
-  .property:not(.highlight):has(.fa-house) {
-    background-color: var(--house-color);
-  }
-  
-  .property:not(.highlight):has(.fa-house)::after {
-    border-top: 9px solid var(--house-color);
-  }
-  
-  /*
-   * Building icon colors.
-   */
-  .property.highlight:has(.fa-building) .icon {
-    color: var(--building-color);
-  }
-  
-  .property:not(.highlight):has(.fa-building) {
-    background-color: var(--building-color);
-  }
-  
-  .property:not(.highlight):has(.fa-building)::after {
-    border-top: 9px solid var(--building-color);
-  }
-  
-  /*
-   * Warehouse icon colors.
-   */
-  .property.highlight:has(.fa-warehouse) .icon {
-    color: var(--warehouse-color);
-  }
-  
-  .property:not(.highlight):has(.fa-warehouse) {
-    background-color: var(--warehouse-color);
-  }
-  
-  .property:not(.highlight):has(.fa-warehouse)::after {
-    border-top: 9px solid var(--warehouse-color);
-  }
-  
-  /*
-   * Shop icon colors.
-   */
-  .property.highlight:has(.fa-shop) .icon {
-    color: var(--shop-color);
-  }
-  
-  .property:not(.highlight):has(.fa-shop) {
-    background-color: var(--shop-color);
-  }
-  
-  .property:not(.highlight):has(.fa-shop)::after {
-    border-top: 9px solid var(--shop-color);
   }
 
 
@@ -284,7 +231,7 @@ body{
   color: white;
 }
 /* -------------------------------- */
-
+/* form */
 .form {
   width: 60svw;
   background-color: white;
@@ -361,3 +308,4 @@ body{
 input {
   margin: 5px;
 }
+/* -------------------------------- */

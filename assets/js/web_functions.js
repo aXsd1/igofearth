@@ -3,7 +3,7 @@ function openModal() {
     isModalOpen = true;
     // Modal
     var modalContent = `
-    <form class="form">
+    <form class="form" onsubmit="return false;">
         <span class="signup">Mate a comment to /</span>
         <div
           <div class="file-upload-container">
