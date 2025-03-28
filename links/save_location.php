@@ -3,6 +3,10 @@ include("connection.php");
 // MysQl log
 mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
 
+session_start();
+
+$user = "1";
+
 // jpeg + re-size
 function convertAndResizeImage($file, $target_file, $max_width, $max_height) {
     list($original_width, $original_height, $image_type) = getimagesize($file);
@@ -76,12 +80,13 @@ $conn->query("CREATE TABLE IF NOT EXISTS `$table_name` (
     latitude DECIMAL(9,6),
     longitude DECIMAL(9,6),
     info TEXT,
-    pic TEXT
+    pic TEXT,
+    user_id TEXT
 )");
 
 // Veriyi tabloya ekle
-$insertQuery = $conn->prepare("INSERT INTO `$table_name` (latitude, longitude, info, pic) VALUES (?, ?, ?, ?)");
-$insertQuery->bind_param("ddss", $latitude, $longitude, $info, $converted_file);
+$insertQuery = $conn->prepare("INSERT INTO `$table_name` (latitude, longitude, info, pic, user_id) VALUES (?, ?, ?, ?, ?)");
+$insertQuery->bind_param("ddsss", $latitude, $longitude, $info, $converted_file, $user);
 $insertQuery->execute();
 
 // Bağlantıyı kapat

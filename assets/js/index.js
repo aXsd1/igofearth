@@ -104,7 +104,7 @@ async function initMap() {
     //Marker();
     openModal();
   });
-  google.maps.event.addListener(map, 'bounds_changed', function() {
+  google.maps.event.addListener(map, 'dragend', function() {
     loadVisibleProperties();
   });
   
@@ -132,7 +132,7 @@ function loadVisibleProperties() {
     method: "POST",
     body: formData
   })
-  .then(response => response.json())
+  .then(response => (response.json()))
   .then(properties => {
     console.log(properties);
     // Clear existing markers before adding new ones
@@ -174,6 +174,10 @@ function buildContent(property) {
         <img src="./uploads/${property.pic}" alt="Property Image">
       </div>
       <div class="details">
+        <div class="user">
+            <img src="./uploads/${property.user_pic}" alt="" srcset="">
+            <h3>${property.name} ${property.lastname}</h3>
+        </div>
         <h4>${property.info}</h4>
       </div>
     `;
