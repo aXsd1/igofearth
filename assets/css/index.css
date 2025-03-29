@@ -366,42 +366,12 @@ input {
   gap: 20px;
   display: flex;
   align-items: center;
-}
-
-.header>ul>div>li>a,
-.header>ul>div>a {
-  text-decoration: none;
-  color: var(--light-text);
-  font-weight: 500;
-  transition: var(--transition-fast);
-  padding: 8px 12px;
-  border-radius: var(--border-radius-sm);
-}
-
-.header>ul>div>li>a:hover,
-.header>ul>div>a:hover {
-  background-color: rgba(255, 255, 255, 0.1);
-  color: var(--primary-color);
-}
-
-#shop_amount {
-  text-decoration: none;
-  color: var(--light-text);
-  cursor: pointer;
-  background-color: var(--primary-color);
-  padding: 6px 12px;
-  border-radius: var(--border-radius-sm);
-  transition: var(--transition-fast);
-}
-
-#shop_amount:hover {
-  background-color: var(--primary-color);
-  transform: translateY(-2px);
+  padding: 10px;
+  text-align: center;
 }
 /* -------------------------------- */
 
 
-/* From Uiverse.io by alexroumi */ 
 .btn {
  padding: 15px 25px;
  border: unset;
@@ -445,4 +415,79 @@ input {
 
 .btn:hover::before {
  width: 100%;
+}
+/* -------------------------------- */
+
+/* dropdown */
+.dropbtn {
+  background-color: #3498db00;
+  color: white;
+  padding: 7px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+}
+
+.dropbtn:hover, .dropbtn:focus {
+  color: var(--primary-color);
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: var(--border-radius-md);
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: var(--dark-bg);
+  border-radius: var(--border-radius-sm);
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+
+  /* ortala */
+  left: 50% !important;
+  transform: translateX(-50%) !important;
+  top: 200% !important;
+}
+
+
+.show {display:block;}
+
+/* profile */
+#myDropdown1 {
+  width: 20vw;
+  height: auto;
+
+}
+.profile{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.profile>img {
+  width: 100px;
+  padding-top: 10px;
+  border-radius: 50%;
+}
+.progile_details {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-left: 10%;
+}
+/* -------------------------------- */
+
+
+/* responsive */
+@media only screen and (max-width: 600px) {
+  #myDropdown1 {
+    width: 80vw !important;
+    left: 0% !important;
+    transform: translateX(0%) !important;
+  }
 }

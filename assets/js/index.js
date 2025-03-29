@@ -176,7 +176,7 @@ function buildContent(property) {
       <div class="details">
         <div class="user">
             <img src="./uploads/${property.user_pic}" alt="" srcset="">
-            <h3>${property.name} ${property.lastname}</h3>
+            <h3>${property.displayname}</h3>
         </div>
         <h4>${property.info}</h4>
       </div>

@@ -22,7 +22,7 @@ $table_name = mysqli_real_escape_string($conn, $table_name);
 
 
 $query = "
-    SELECT t.*, u.id AS user_id, u.name, u.lastname, u.email, u.user_pic
+    SELECT t.*, u.id AS user_id, u.name, u.lastname, u.email, u.user_pic, u.displayname
     FROM `$table_name` t
     INNER JOIN users u ON t.user_id = u.id
 ";
