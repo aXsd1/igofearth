@@ -4,7 +4,7 @@ function openModal() {
     // Modal
     var modalContent = `
     <form class="form" onsubmit="return false;">
-        <span class="signup">Mate a comment to /</span>
+        <span class="signup">Take a photo and leave a comment</span>
         <div
           <div class="file-upload-container">
             <div class="file-upload">
@@ -18,7 +18,7 @@ function openModal() {
           <input id="filed1" type="text" name="filed1" placeholder="What makes this place special" class="form--input">
         </div>
 
-        <button class="form--submit" onclick="Marker();">Send</button>
+        <button class="btn" onclick="Marker();">Send</button>
     </form>
     `;
     document.getElementById('modal').innerHTML = modalContent;
@@ -60,4 +60,8 @@ function saveLocation(lat, lon, info, file) {
   .then(data => console.log(data))
   .catch(error => console.error("Error:", error));
 }
-  
+
+commentbtn = document.querySelector("#commentbtn");
+commentbtn.addEventListener("click", () => {
+  openModal();
+});

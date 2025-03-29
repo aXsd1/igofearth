@@ -7,7 +7,17 @@
     <link rel="stylesheet" href="assets\css\index.css">
 </head>
 <body>
+    <div class="header">
+        <ul>
+            <div><i class="fa-solid fa-tags"></i><li><a data-scroll href="#infobox">About us</a></li></div>
+            <div><i class="fa-solid fa-question"></i><li><a data-scroll href="#qnain">Map</a></li></div>
+            <div><i class="fa-solid fa-address-book"></i><li><a data-scroll href="#contact">Contact us</a></li></div>
+            <div><i class="fa-solid fa-user"></i><a href="http://yeageth.com/login.php" target="_blank" rel="noopener noreferrer" class="user-link">Login</a></div>
+        </ul>
+    </div>
     <div id="map"></div>
+    
+    <button class="btn" id="commentbtn">Comment!</button>
 
     <!-- Modal ve Overlay -->
     <div onclick="closeModal()" class="overlay" id="overlay"></div>

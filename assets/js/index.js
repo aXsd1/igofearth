@@ -88,22 +88,22 @@ async function initMap() {
 
 
   // Create the DIV to hold the control.
-  const centerControlDiv = document.createElement("div");
-  const centerControl = createCenterControl(map);
-  centerControlDiv.appendChild(centerControl);
-  map.controls[google.maps.ControlPosition.TOP_CENTER].push(centerControlDiv);
-
-
-  // Create add marker button
-  const createMarkerDiv = document.createElement("div");
-  const createMarker = createMarkerButton();
-  createMarkerDiv.appendChild(createMarker);
-  map.controls[google.maps.ControlPosition.TOP_CENTER].push(createMarkerDiv);
-  
-  createMarker.addEventListener("click", () => {
-    //Marker();
-    openModal();
-  });
+  //const centerControlDiv = document.createElement("div");
+  //const centerControl = createCenterControl(map);
+  //centerControlDiv.appendChild(centerControl);
+  //map.controls[google.maps.ControlPosition.TOP_CENTER].push(centerControlDiv);
+//
+//
+  //// Create add marker button
+  //const createMarkerDiv = document.createElement("div");
+  //const createMarker = createMarkerButton();
+  //createMarkerDiv.appendChild(createMarker);
+  //map.controls[google.maps.ControlPosition.TOP_CENTER].push(createMarkerDiv);
+  //
+  //createMarker.addEventListener("click", () => {
+  //  //Marker();
+  //  openModal();
+  //});
   google.maps.event.addListener(map, 'dragend', function() {
     loadVisibleProperties();
   });
