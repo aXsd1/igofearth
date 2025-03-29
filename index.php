@@ -41,7 +41,9 @@ if ($logged_in) {
                     <div id="myDropdown1" class="dropdown-content">
                         <?php if ($logged_in): ?>
                             <div class="profile">
-                                <img src="./user_pic/<?php echo $user_pic; ?>" alt="Profile Picture">
+                            <a href="#" onclick="event.preventDefault(); openEdit_picture_Modal();">
+                                    <img src="./user_pic/<?php echo $user_pic; ?>" alt="Profile Picture">
+                                </a>
                                 <h3><?php echo $displayname; ?></h3>
                             </div>
                             <div class="profile_details">

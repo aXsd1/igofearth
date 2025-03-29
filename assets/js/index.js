@@ -174,11 +174,13 @@ function buildContent(property) {
         <img src="./uploads/${property.pic}" alt="Property Image">
       </div>
       <div class="details">
-        <div class="user">
-            <img src="./uploads/${property.user_pic}" alt="" srcset="">
-            <h3>${property.displayname}</h3>
+        <div class="text_area">
+          <h4>${property.info}</h4>
         </div>
-        <h4>${property.info}</h4>
+        <div class="user">
+          <img src="./uploads/${property.user_pic}" alt="" srcset="">
+          <h3>${property.displayname}</h3>
+        </div>
       </div>
     `;
   return content;
