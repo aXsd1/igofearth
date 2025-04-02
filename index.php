@@ -41,9 +41,10 @@ if ($logged_in) {
                     <div id="myDropdown1" class="dropdown-content">
                         <?php if ($logged_in): ?>
                             <div class="profile">
-                            <a href="#" onclick="event.preventDefault(); openEdit_picture_Modal();">
-                                    <img src="./user_pic/<?php echo $user_pic; ?>" alt="Profile Picture">
-                                </a>
+                            <a href="#" class="edit-link" onclick="event.preventDefault(); openEdit_picture_Modal();">
+                                <img src="./user_pic/<?php echo $user_pic; ?>" alt="Profile Picture" class="profile-pic">
+                                <span class="edit-icon">✏️</span>
+                            </a>
                                 <h3><?php echo $displayname; ?></h3>
                             </div>
                             <div class="profile_details">
@@ -69,7 +70,11 @@ if ($logged_in) {
                 </div>
             </div>
             <div>button</div>
-            <div>Login</div>
+            <?php if ($logged_in): ?>
+                <div><button onclick="logout()" class="dropbtn">Logout</button></div>
+            <?php else: ?>
+                <div><button onclick="location.href='login.php'" class="dropbtn">Login</button></div>
+            <?php endif; ?>
         </ul>
     </div>
     <div id="map"></div>

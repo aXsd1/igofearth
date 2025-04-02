@@ -68,7 +68,7 @@ function login() {
             errorMessageDiv.innerText = "Logged in successfully";
             errorMessageDiv.style.color = "green";
             setTimeout(() => {
-                window.location.href = "login.php"; // Başarı durumunda yönlendirme yap
+                window.location.href = "index.php"; // Başarı durumunda yönlendirme yap
             }, 1500);
         } else {
             errorMessageDiv.innerText = data.error || "An unknown error has occurred";

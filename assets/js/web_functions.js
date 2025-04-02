@@ -1,65 +1,79 @@
 let isModalOpen = false;
 function openModal() {
     isModalOpen = true;
-    // Modal
+
+    // Modal içeriği
     var modalContent = `
     <form class="form" onsubmit="return false;">
         <span class="signup">Take a photo and leave a comment</span>
-        <div
-          <div class="file-upload-container">
+        <div class="file-upload-container">
             <div class="file-upload">
-              <input name="file" multiple="" class="file-input" id="fileInput" type="file" />
-              <label class="file-label" for="fileInput">
-                <i class="upload-icon">📁</i>
-                <p>Drag &amp; Drop your files here or click to upload</p>
-              </label>
+                <input name="file" multiple class="file-input" id="fileInput" type="file" />
+                <label class="file-label" for="fileInput">
+                    <i class="upload-icon" id="uploadIcon">📁</i>
+                    <p id="uploadText">Drag & Drop your files here or click to upload</p>
+                </label>
             </div>
-          </div>
-          <div class="message">
-              <input id="filed1" type="text" name="filed1" placeholder="What makes this place special" class="form--input">
+        </div>
+
+        <div class="message">
+            <input id="filed1" type="text" name="filed1" placeholder="What makes this place special" class="form--input">
             <div class="progress-container">
-              <svg width="50" height="50" class="progress-ring">
-                <circle cx="25" cy="25" r="20" stroke="#ddd" stroke-width="5" fill="none"/>
-                <circle id="progressCircle" cx="25" cy="25" r="20" stroke="#1DA1F2" stroke-width="5" fill="none"
-                stroke-dasharray="126" stroke-dashoffset="126"/>
-              </svg>
-              <div class="progress-text" id="charCount">0</div>
+                <svg width="50" height="50" class="progress-ring">
+                    <circle cx="25" cy="25" r="20" stroke="#ddd" stroke-width="5" fill="none"/>
+                    <circle id="progressCircle" cx="25" cy="25" r="20" stroke="#1DA1F2" stroke-width="5" fill="none"
+                    stroke-dasharray="126" stroke-dashoffset="126"/>
+                </svg>
+                <div class="progress-text" id="charCount">0</div>
             </div>
-          </div>
         </div>
 
         <button class="btn" onclick="Marker();">Send</button>
-    </form>
-    `;
+    </form>`;
+
+    // Modal içine HTML içeriğini ekle
     document.getElementById('modal').innerHTML = modalContent;
 
-    // Overlay ve modalı show
+    // Overlay ve modalı göster
     document.getElementById('overlay').style.display = 'block';
     document.getElementById('modal').style.display = 'block';
 
+    // Elemanları seç
     const textarea = document.getElementById("filed1");
     const progressCircle = document.getElementById("progressCircle");
     const charCount = document.getElementById("charCount");
+    const uploadIcon = document.getElementById("uploadIcon");
+    const uploadText = document.getElementById("uploadText");
+    const fileInput = document.getElementById("fileInput");
 
     const maxChars = 280;
     const circleLength = 126; // SVG çemberin çevresi
 
+    // Karakter sayacı ve ilerleme çemberi
     textarea.addEventListener("input", function () {
         let currentLength = textarea.value.length;
     
-        // Karakter sayısını göster
+        // Karakter sayısını güncelle
         charCount.textContent = currentLength;
     
         // Çemberin doluluk oranını ayarla
         let progress = (currentLength / maxChars) * circleLength;
         progressCircle.style.strokeDashoffset = circleLength - progress;
     
-        // 280 karakteri geçtiğinde yazmayı engelle
+        // 280 karakteri geçtiğinde giriş engellenir
         if (currentLength >= maxChars) {
             textarea.value = textarea.value.substring(0, maxChars);
+            charCount.textContent = maxChars; // Sayacı 280'de sabitle
         }
     });
 
+    // Dosya yükleme işlemi
+    fileInput.addEventListener("change", function () {
+        if (this.files.length > 0) {
+            uploadIcon.innerHTML = "✅"; // Tik işareti koy
+            uploadText.innerHTML = "File uploaded successfully!";
+        }
+    });
 }
 
 function openEdit_picture_Modal() {
