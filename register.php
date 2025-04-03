@@ -17,7 +17,7 @@
         <button onclick="create_acc(); return false;" class="form-btn">Create account</button>
       </form>
       <p class="sign-up-label">
-        Already have an account?<span class="sign-up-link">Log in</span>
+        Already have an account?<span class="sign-up-link" onclick="redirectToLogin()">Log in</span>
       </p>
       <p id="message" class="sign-up-label"></p>
       <div class="buttons-container">

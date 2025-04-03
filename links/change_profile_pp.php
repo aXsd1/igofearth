@@ -41,13 +41,13 @@ $converted_file = $target_dir . 'picture_' . $safe_name;
 convertAndResizeImage($target_file, $converted_file, 200, 200);
 
 // **E-posta Kontrolü**
-if (!isset($_POST["email"]) || empty($_POST["email"])) {
+if (!isset($_SESSION["email"])) {
     $response["error"] = "User email is required.";
     echo json_encode($response);
     exit;
 }
 
-$email = $_POST["email"];
+$email = $_SESSION["email"];
 
 // **Veritabanını Güncelle (MySQLi ile)**
 if ($stmt = $conn->prepare("UPDATE users SET user_pic = ? WHERE email = ?")) {

@@ -81,3 +81,10 @@ function login() {
         console.error('An error occurred:', error);
     });
 }
+
+function redirectToRegister() {
+    window.location.href = 'register.php';
+}
+function redirectToLogin() {
+    window.location.href = 'login.php';
+  }

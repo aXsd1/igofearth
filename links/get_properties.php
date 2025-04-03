@@ -5,7 +5,7 @@ ini_set('display_errors', 1);
 
 session_start();
 
-$user_id = "1"; // Noktalı virgül eksikti, düzeltildi
+$user_id = $_SESSION['id']; // Noktalı virgül eksikti, düzeltildi
 
 // Veritabanı bağlantısını ekle
 include("connection.php");

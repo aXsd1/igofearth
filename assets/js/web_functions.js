@@ -83,7 +83,7 @@ function openEdit_picture_Modal() {
   <form class="form" onsubmit="return false;">
       <div class="file-upload-container">
         <div class="file-upload">
-          <input name="file" class="file-input" id="fileInput" type="file" />
+          <input name="profile_pp_file" class="file-input" id="fileInput" type="file" />
           <label class="file-label" for="fileInput">
             <i class="upload-icon" id="uploadIcon">📁</i>
             <p id="uploadText">Drag & Drop your files here or click to upload</p>
@@ -169,12 +169,11 @@ window.onclick = function(event) {
 }
 
 function Edit_picture() {
-  /* var userEmail = "<?php echo $email; ?>"; */
-  var userEmail = "support@yeageth.com";
   const fileInput = document.querySelector('[name="profile_pp_file"]');
   const errorMessageDiv = document.getElementById('message');
 
   if (!fileInput || !fileInput.files.length) {
+    errorMessageDiv.style.display = "block";
     errorMessageDiv.innerText = "Please upload a picture first";
     errorMessageDiv.style.color = "red";
     return;
@@ -182,7 +181,6 @@ function Edit_picture() {
 
   const formData = new FormData();
   formData.append("file", fileInput.files[0]);
-  formData.append("email", userEmail);
 
   fetch("./links/change_profile_pp.php", {
     method: "POST",
@@ -192,17 +190,21 @@ function Edit_picture() {
   .then(data => {
     console.log(data);
     if (data.success) {
+      errorMessageDiv.style.display = "block";
       errorMessageDiv.innerText = "Picture changed successfully!";
       errorMessageDiv.style.color = "green";
       setTimeout(function() {
+        errorMessageDiv.style.display = "none";
         location.reload();
       }, 1500);
     } else {
+      errorMessageDiv.style.display = "block";
       errorMessageDiv.innerText = data.error || "An unknown error has occurred";
       errorMessageDiv.style.color = "red";
     }
   })
   .catch(error => {
+    errorMessageDiv.style.display = "block";
     errorMessageDiv.innerText = 'Error: ' + error.message;
     errorMessageDiv.style.color = "red";
     console.error('An error occurred:', error);
@@ -277,3 +279,7 @@ nameInput.addEventListener('keydown', function (event) {
     nameInput.blur(); // Trigger blur to save the value
   }
 });
+
+function logout() {
+  window.location.href = "links/logout.php"
+}

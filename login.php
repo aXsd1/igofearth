@@ -18,7 +18,7 @@
         <button onclick="login(); return false;" class="form-btn">Log in</button>
       </form>
       <p class="sign-up-label">
-        Don't have an account?<span class="sign-up-link">Sign up</span>
+        Don't have an account?<span class="sign-up-link" onclick="redirectToRegister()">Sign up</span>
       </p>
       <p id="message" class="sign-up-label"></p>
       <div class="buttons-container">

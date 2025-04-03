@@ -36,6 +36,7 @@ if ($result->num_rows > 0) {
     $row = $result->fetch_assoc();
     if (password_verify($password, $row['password'])) {
         $_SESSION['email'] = $row['email'];
+        $_SESSION['id'] = $row['id'];
 
         // JSON yanıt ile başarı bilgisi döndür
         exit(json_encode(["success" => true, 
