@@ -8,7 +8,7 @@ function openModal() {
         <span class="signup">Take a photo and leave a comment</span>
         <div class="file-upload-container">
             <div class="file-upload">
-                <input name="file" multiple class="file-input" id="fileInput" type="file" />
+                <input name="file" class="file-input" id="fileInput" type="file" />
                 <label class="file-label" for="fileInput">
                     <i class="upload-icon" id="uploadIcon">📁</i>
                     <p id="uploadText">Drag & Drop your files here or click to upload</p>
@@ -42,8 +42,8 @@ function openModal() {
     const textarea = document.getElementById("filed1");
     const progressCircle = document.getElementById("progressCircle");
     const charCount = document.getElementById("charCount");
-    const uploadIcon = document.getElementById("uploadIcon");
     const uploadText = document.getElementById("uploadText");
+    const uploadIcon = document.getElementById("uploadIcon");
     const fileInput = document.getElementById("fileInput");
 
     const maxChars = 280;
@@ -83,10 +83,10 @@ function openEdit_picture_Modal() {
   <form class="form" onsubmit="return false;">
       <div class="file-upload-container">
         <div class="file-upload">
-          <input name="profile_pp_file" multiple="" class="file-input" id="fileInput" type="file" />
+          <input name="file" class="file-input" id="fileInput" type="file" />
           <label class="file-label" for="fileInput">
-            <i class="upload-icon">📁</i>
-            <p>Drag &amp; Drop your files here or click to upload</p>
+            <i class="upload-icon" id="uploadIcon">📁</i>
+            <p id="uploadText">Drag & Drop your files here or click to upload</p>
           </label>
         </div>
       </div>
@@ -100,6 +100,16 @@ function openEdit_picture_Modal() {
   document.getElementById('overlay').style.display = 'block';
   document.getElementById('modal').style.display = 'block';
 
+  const fileInput = document.getElementById("fileInput");
+  const uploadText = document.getElementById("uploadText");
+  const uploadIcon = document.getElementById("uploadIcon");
+
+  fileInput.addEventListener("change", function () {
+    if (this.files.length > 0) {
+        uploadIcon.innerHTML = "✅"; // Tik işareti koy
+        uploadText.innerHTML = "File uploaded successfully!";
+    }
+  });
 }
 
 function closeModal() {
@@ -146,7 +156,7 @@ function myFunction(number) {
 
 // Close the dropdown menu if the user clicks outside of it
 window.onclick = function(event) {
-  if (!event.target.matches('.dropbtn')) {
+  if (!event.target.matches('.dropbtn') && !event.target.matches('.dropdown-content, .dropdown-content *')) {
     var dropdowns = document.getElementsByClassName("dropdown-content");
     var i;
     for (i = 0; i < dropdowns.length; i++) {
@@ -198,3 +208,72 @@ function Edit_picture() {
     console.error('An error occurred:', error);
   });
 }
+
+const nameDisplay = document.getElementById('nameDisplay');
+const editIcon = document.getElementById('editIcon');
+const nameText = document.getElementById('nameText');
+const nameInput = document.getElementById('nameInput');
+
+// Mouse hover to show the edit icon
+nameDisplay.addEventListener('mouseenter', function () {
+  editIcon.style.display = 'inline'; // Show edit icon
+});
+
+nameDisplay.addEventListener('mouseleave', function () {
+  editIcon.style.display = 'none'; // Hide edit icon
+});
+
+// Click the edit icon to make the name editable
+editIcon.addEventListener('click', function () {
+  nameText.style.display = 'none'; // Hide the current name text
+  nameInput.style.display = 'inline'; // Show input field
+  nameInput.focus(); // Focus on the input field
+});
+
+// Optional: Update the name when the input loses focus (blur event)
+nameInput.addEventListener('blur', function () {
+  const updatedName = nameInput.value;
+  const errorMessageDiv = document.getElementById('message');
+  nameText.textContent = updatedName; // Update displayed name
+  nameText.style.display = 'inline'; // Show updated name text
+  nameInput.style.display = 'none'; // Hide input field
+
+  const formData = new FormData();
+
+  formData.append("updated_name", updatedName);
+
+  fetch("./links/update_display_name.php", {
+    method: "POST",
+    body: formData
+  })
+  .then(response => response.json())
+  .then(data => {
+    console.log(data);
+    if (data.success) {
+      errorMessageDiv.style.display = "block";
+      errorMessageDiv.innerText = "Display name changed successfully!";
+      errorMessageDiv.style.color = "green";
+      setTimeout(function() {
+        errorMessageDiv.style.display = "none";
+        /* location.reload(); */
+      }, 1500);
+    } else {
+      errorMessageDiv.style.display = "block";
+      errorMessageDiv.innerText = data.error || "An unknown error has occurred";
+      errorMessageDiv.style.color = "red";
+    }
+  })
+  .catch(error => {
+    errorMessageDiv.style.display = "block";
+    errorMessageDiv.innerText = 'Error: ' + error.message;
+    errorMessageDiv.style.color = "red";
+    console.error('An error occurred:', error);
+  });
+});
+
+// Optional: Allow "Enter" key to also save the edited name
+nameInput.addEventListener('keydown', function (event) {
+  if (event.key === 'Enter') {
+    nameInput.blur(); // Trigger blur to save the value
+  }
+});

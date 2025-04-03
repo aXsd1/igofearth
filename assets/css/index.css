@@ -213,7 +213,7 @@ body{
 
 /* upload file box */
 .file-upload-container {
-  width: 50%;
+  margin-bottom: 1rem;
   max-width: 500px;
 }
 
@@ -276,6 +276,7 @@ body{
 }
 
 .signup {
+  text-align: center;
   color: rgb(77, 75, 75);
   text-transform: uppercase;
   letter-spacing: 2px;
@@ -543,6 +544,9 @@ circle {
   align-items: flex-start;
   margin-left: 10%;
 }
+#message {
+  display: none;
+}
 /* -------------------------------- */
 
 
@@ -555,5 +559,8 @@ circle {
   }
   .highlight {
     min-width: 80vw;
+  }
+  #modal {
+    width: 100%;
   }
 }

@@ -41,17 +41,20 @@ if ($logged_in) {
                     <div id="myDropdown1" class="dropdown-content">
                         <?php if ($logged_in): ?>
                             <div class="profile">
-                            <a href="#" class="edit-link" onclick="event.preventDefault(); openEdit_picture_Modal();">
-                                <img src="./user_pic/<?php echo $user_pic; ?>" alt="Profile Picture" class="profile-pic">
-                                <span class="edit-icon">✏️</span>
-                            </a>
-                                <h3><?php echo $displayname; ?></h3>
+                                <a href="#" class="edit-link" onclick="event.preventDefault(); openEdit_picture_Modal();">
+                                    <img src="./user_pic/<?php echo $user_pic; ?>" alt="Profile Picture" class="profile-pic">
+                                    <span class="edit-icon">✏️</span>
+                                </a>
+                                <h3 id="nameDisplay">Name: <span id="nameText"><?php echo $displayname; ?></span>
+                                    <input type="text" id="nameInput" value="<?php echo $displayname; ?>" style="display: none;" />
+                                    <span id="editIcon" style="display: none; cursor: pointer;">✏️</span>
+                                    <h4 id="message"></h4>
+                                </h3>
                             </div>
                             <div class="profile_details">
-                                <h4>Name: <?php echo $name; ?></h4>
+                                <h4>Lastname: <?php echo $name; ?></h4>
                                 <h4>Lastname: <?php echo $lastname; ?></h4>
                                 <h4>Email: <?php echo $email; ?></h4>
-                                <h4>Total messages: 500</h4>
                             </div>
                         <?php else: ?>
                             <p style="text-align: center; padding: 10px; font-weight: bold;">Lütfen giriş yapın</p>
