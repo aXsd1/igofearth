@@ -5,7 +5,7 @@ mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
 
 session_start();
 
-$user = "1";
+$user = $_SESSION['id'];
 
 // jpeg + re-size
 function convertAndResizeImage($file, $target_file, $max_width, $max_height) {
@@ -88,6 +88,10 @@ $conn->query("CREATE TABLE IF NOT EXISTS `$table_name` (
 $insertQuery = $conn->prepare("INSERT INTO `$table_name` (latitude, longitude, info, pic, user_id) VALUES (?, ?, ?, ?, ?)");
 $insertQuery->bind_param("ddsss", $latitude, $longitude, $info, $converted_file, $user);
 $insertQuery->execute();
+
+$stmt = $conn->prepare("UPDATE users SET xp = xp + 10 WHERE id = ?");
+$stmt->bind_param("i", $user);
+$stmt->execute();
 
 // Bağlantıyı kapat
 $insertQuery->close();

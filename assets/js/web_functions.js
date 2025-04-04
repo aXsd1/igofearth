@@ -145,10 +145,12 @@ function saveLocation(lat, lon, info, file) {
 }
 
 commentbtn = document.querySelector("#commentbtn");
-commentbtn.addEventListener("click", () => {
-  openModal();
-});
-
+if (commentbtn) {
+  commentbtn.addEventListener("click", () => {
+    openModal();
+  });
+}
+  
 /* dropdown */
 function myFunction(number) {
   document.getElementById("myDropdown" + number).classList.toggle("show");
@@ -211,40 +213,43 @@ function Edit_picture() {
   });
 }
 
+//profile editing
 const nameDisplay = document.getElementById('nameDisplay');
 const editIcon = document.getElementById('editIcon');
 const nameText = document.getElementById('nameText');
 const nameInput = document.getElementById('nameInput');
 
-// Mouse hover to show the edit icon
-nameDisplay.addEventListener('mouseenter', function () {
-  editIcon.style.display = 'inline'; // Show edit icon
-});
+if (nameDisplay, editIcon, nameText, nameInput) {
 
-nameDisplay.addEventListener('mouseleave', function () {
-  editIcon.style.display = 'none'; // Hide edit icon
-});
-
-// Click the edit icon to make the name editable
-editIcon.addEventListener('click', function () {
-  nameText.style.display = 'none'; // Hide the current name text
-  nameInput.style.display = 'inline'; // Show input field
-  nameInput.focus(); // Focus on the input field
-});
-
-// Optional: Update the name when the input loses focus (blur event)
-nameInput.addEventListener('blur', function () {
-  const updatedName = nameInput.value;
-  const errorMessageDiv = document.getElementById('message');
-  nameText.textContent = updatedName; // Update displayed name
-  nameText.style.display = 'inline'; // Show updated name text
-  nameInput.style.display = 'none'; // Hide input field
-
-  const formData = new FormData();
-
-  formData.append("updated_name", updatedName);
-
-  fetch("./links/update_display_name.php", {
+  // Mouse hover to show the edit icon
+  nameDisplay.addEventListener('mouseenter', function () {
+    editIcon.style.display = 'inline'; // Show edit icon
+  });
+  
+  nameDisplay.addEventListener('mouseleave', function () {
+    editIcon.style.display = 'none'; // Hide edit icon
+  });
+  
+  // Click the edit icon to make the name editable
+  editIcon.addEventListener('click', function () {
+    nameText.style.display = 'none'; // Hide the current name text
+    nameInput.style.display = 'inline'; // Show input field
+    nameInput.focus(); // Focus on the input field
+  });
+  
+  // Optional: Update the name when the input loses focus (blur event)
+  nameInput.addEventListener('blur', function () {
+    const updatedName = nameInput.value;
+    const errorMessageDiv = document.getElementById('message');
+    nameText.textContent = updatedName; // Update displayed name
+    nameText.style.display = 'inline'; // Show updated name text
+    nameInput.style.display = 'none'; // Hide input field
+    
+    const formData = new FormData();
+    
+    formData.append("updated_name", updatedName);
+    
+    fetch("./links/update_display_name.php", {
     method: "POST",
     body: formData
   })
@@ -279,6 +284,7 @@ nameInput.addEventListener('keydown', function (event) {
     nameInput.blur(); // Trigger blur to save the value
   }
 });
+}
 
 function logout() {
   window.location.href = "links/logout.php"

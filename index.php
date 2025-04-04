@@ -19,6 +19,7 @@ if ($logged_in) {
         $name = htmlspecialchars($row['name']);
         $lastname = htmlspecialchars($row['lastname']);
         $user_pic = htmlspecialchars($row['user_pic']);
+        $xp = htmlspecialchars($row['xp']);
     }
 }
 
@@ -54,10 +55,11 @@ if ($logged_in) {
                             <div class="profile_details">
                                 <h4>Name: <?php echo $name; ?></h4>
                                 <h4>Lastname: <?php echo $lastname; ?></h4>
-                                <h4>Email: <?php echo $email; ?></h4>
+                                <h4>Email: <?php echo $email; ?></h4> 
+                                <h4>Xp: <?php echo $xp; ?></h4>
                             </div>
                         <?php else: ?>
-                            <p style="text-align: center; padding: 10px; font-weight: bold;">Lütfen giriş yapın</p>
+                            <p style="text-align: center; padding: 10px; font-weight: bold;">Please login <button onclick="location.href='login.php'" class="dropbtn">▶</button></p>
                         <?php endif; ?>
                     </div>
                 </div>
@@ -83,9 +85,9 @@ if ($logged_in) {
     <div id="map"></div>
     <div>
         <?php if ($logged_in): ?>
-            <button class="btn" id="commentbtn">Comment!</button>
+            <button class="btn commentbtn" id="commentbtn">Comment!</button>
         <?php else: ?>
-            <button class="btn" id="commentbtn">Login in to make a comment</button>
+            <button class="btn commentbtn" onclick="location.href='login.php'">Login in to make a comment</button>
         <?php endif; ?>
     </div>
                 

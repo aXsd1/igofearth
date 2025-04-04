@@ -104,6 +104,7 @@ body{
   display: none;
   flex-direction: column;
   flex: 1;
+  width: 100%;
 }
 
 .property .address {
@@ -428,8 +429,7 @@ circle {
  transition: all 250ms;
  overflow: hidden;
 }
-
-#commentbtn {
+.commentbtn {
   position: absolute;
   bottom: 20%;
   left: 50vw;

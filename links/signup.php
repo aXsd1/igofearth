@@ -31,8 +31,9 @@ $_SESSION['user'] = $username;
 
 // Tarih ve varsayılan profil fotoğrafı
 $current_date = date('Y-m-d H:i:s');
-$pic = "../user_pic/Screenshot_2.png";
-$displayname = "";
+$pic = "../user_pic/default.jpg";
+$displayname = "user" . uniqid();
+$xp = 0;
 
 // Email kontrolü
 $sql = "SELECT id FROM users WHERE email = ?";
@@ -52,9 +53,9 @@ if ($count_email > 0) {
 $hash = password_hash($password, PASSWORD_DEFAULT);
 
 // Yeni kullanıcıyı kaydet
-$sql = "INSERT INTO users(displayname, name, lastname, email, password, user_pic, date) VALUES(?, ?, ?, ?, ?, ?, ?)";
+$sql = "INSERT INTO users(displayname, name, lastname, email, password, user_pic, date, xp) VALUES(?, ?, ?, ?, ?, ?, ?, ?)";
 $stmt = mysqli_prepare($conn, $sql);
-mysqli_stmt_bind_param($stmt, "sssssss", $displayname, $username, $lastname, $email, $hash, $pic, $current_date);
+mysqli_stmt_bind_param($stmt, "sssssssi", $displayname, $username, $lastname, $email, $hash, $pic, $current_date, $xp);
 
 if (mysqli_stmt_execute($stmt)) {
     mysqli_stmt_close($stmt);
